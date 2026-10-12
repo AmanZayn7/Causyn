@@ -21,22 +21,7 @@ The dataset is **Olist Brazilian ecommerce**, covering nine source CSVs. Default
 
 ## Architecture
 
-```mermaid
-flowchart TD
-    UI[Chat and analytics dashboard] --> O[Orchestrator]
-    O --> S[SQL specialist]
-    O --> D[Document specialist]
-    O --> P[Python analyst]
-    O --> C[Visualization specialist]
-    S --> T[Approved analytics tools]
-    P --> T
-    C --> T
-    T --> DB[(PostgreSQL reporting views)]
-    D --> M[Metric dictionary]
-    O --> V[Deterministic checks and AI verifier]
-    V --> R[Reviewed answer and evidence]
-    R --> UI
-```
+![Causyn architecture: orchestrator, specialist agents, PostgreSQL and evidence verification](docs/architecture.png)
 
 The application has **six roles**: an orchestrator and five specialists. Specialists have constrained responsibilities; they do not run unrestricted SQL or generated Python code. The document retrieval implementation uses keyword overlap with title weighting, rather than embedding-based vector retrieval.
 
